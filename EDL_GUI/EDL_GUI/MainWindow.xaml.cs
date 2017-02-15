@@ -57,7 +57,6 @@ namespace EDL_GUI
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
-            //_serialThread.Abort();  //aborts previous thread
             _serialThread = new Thread(ReadAndUpdate); //reinitialising thread
             DateTime current = DateTime.Now;
             String current_str = current.Date.ToString().Replace(" ", "");
@@ -74,14 +73,14 @@ namespace EDL_GUI
             {
                 MessageBox.Show(ex.ToString());
             }
+            textBlock.Text = "Start button";
         }
 
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             _continue = false;
-            _serialThread.Abort();  //aborts previous thread
-            //_serialThread = new Thread(ReadAndUpdate); //reinitialising thread
-            _serialport.Close();
+ 
+            textBlock.Text = "Stop button";
         }
 
         private void COMPortComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -107,7 +106,7 @@ namespace EDL_GUI
 
             while (_continue)
             {
-                Thread.Sleep(1);
+                Thread.Sleep(10);
                 try
                 {
                     string message = _serialport.ReadLine();
@@ -115,15 +114,24 @@ namespace EDL_GUI
                     Dispatcher.Invoke(() =>
                     {
                         textBlock.Text = message;
+                        
                     });
 
                     write_in_file(message);
                 }
-                catch { }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
 
  
             }
+
             _serialport.Close();
+            _serialThread.Abort();  //aborts previous thread
+       
+            
+        
         }
 
 
@@ -154,8 +162,10 @@ namespace EDL_GUI
                 filename = dlg.FileName;
                 MessageBox.Show(filename);
             }
-            //graph_window my_window = new graph_window(filename);
-           // my_window.Show();
+            graph_window my_window = new graph_window(filename);
+           my_window.Show();
+            //System.Windows.Forms.Integration.WindowsFormsHost host =
+            //               new System.Windows.Forms.Integration.WindowsFormsHost();
         }
     
     }
