@@ -27,6 +27,7 @@ namespace EDL_GUI
         public Thread _serialThread;
         static bool _continue = true;
         public String filename = "";
+        graph_window graph_window= new graph_window();
 
 
         public MainWindow()
@@ -162,11 +163,16 @@ namespace EDL_GUI
                 filename = dlg.FileName;
                 MessageBox.Show(filename);
             }
-            graph_window my_window = new graph_window(filename);
-           my_window.Show();
+           graph_window.setFilename(filename) ;
+            plotFileName.Text = filename;
             //System.Windows.Forms.Integration.WindowsFormsHost host =
             //               new System.Windows.Forms.Integration.WindowsFormsHost();
         }
-    
+
+        private void plotButton_Click(object sender, RoutedEventArgs e)
+        {
+            graph_window.plot_data();
+            graph_window.Show();
+        }
     }
 }

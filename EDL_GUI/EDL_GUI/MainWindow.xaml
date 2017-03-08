@@ -5,18 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EDL_GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Start" Content="Start" HorizontalAlignment="Left" Margin="220,32,0,0" VerticalAlignment="Top" Width="75" Click="startButton_Click"/>
-        <Button x:Name="Stop" Content="Stop" HorizontalAlignment="Left" Margin="324,32,0,0" VerticalAlignment="Top" Width="75" Click="Stop_Click"/>
-        <ComboBox x:Name="COMPortComboBox" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.183,-0.455" SelectionChanged="COMPortComboBox_SelectionChanged"/>
-        <ComboBox x:Name="baudRateComboBox" HorizontalAlignment="Left" Margin="106,30,0,0" VerticalAlignment="Top" Width="73" RenderTransformOrigin="0.183,-0.455" Height="24"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,59,0,0" TextWrapping="Wrap" Text="COM Port" VerticalAlignment="Top" Width="73"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="106,59,0,0" TextWrapping="Wrap" Text="BaudRate" VerticalAlignment="Top" Width="73"/>
-        <Button x:Name="refreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="220,62,0,0" VerticalAlignment="Top" Width="75" Click="refreshButton_Click"/>
-        <Button x:Name="browseButton" Content="Browse" HorizontalAlignment="Left" Margin="324,62,0,0" VerticalAlignment="Top" Width="75" Click="browseButton_Click"/>
-        <Viewbox x:Name="viewbox" HorizontalAlignment="Left" Height="100" Margin="60,106,0,0" VerticalAlignment="Top" Width="290"/>
+        Title="MainWindow"
+        Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}" 
+        Height="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}"
+        WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
+
+
+
+    <Grid Grid.IsSharedSizeScope="True" RenderTransformOrigin="0.501,0.562">
+
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="24" Margin="52,156,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="169"/>
+        <Button x:Name="Start" Content="Start" HorizontalAlignment="Left" Margin="433,222,0,0" VerticalAlignment="Top" Width="137" Click="startButton_Click" Height="78"/>
+        <Button x:Name="Stop" Content="Stop" HorizontalAlignment="Left" Margin="636,222,0,0" VerticalAlignment="Top" Width="134" Click="Stop_Click" Height="77"/>
+        <ComboBox x:Name="COMPortComboBox" HorizontalAlignment="Left" Margin="68,222,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.183,-0.455" SelectionChanged="COMPortComboBox_SelectionChanged"/>
+        <ComboBox x:Name="baudRateComboBox" HorizontalAlignment="Left" Margin="222,220,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.183,-0.455" Height="24"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="68,276,0,0" TextWrapping="Wrap" Text="COM Port" VerticalAlignment="Top" Width="72"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="24" Margin="222,276,0,0" TextWrapping="Wrap" Text="BaudRate" VerticalAlignment="Top" Width="72"/>
+        <Button x:Name="refreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="833,222,0,0" VerticalAlignment="Top" Width="134" Click="refreshButton_Click" Height="77"/>
+        <Button x:Name="browseButton" Content="Browse" HorizontalAlignment="Left" Margin="636,376,0,0" VerticalAlignment="Top" Width="134" Click="browseButton_Click" Height="64"/>
+        <Button x:Name="plotButton" Content="Plot" HorizontalAlignment="Left" Margin="833,376,0,0" VerticalAlignment="Top" Width="134" Click="plotButton_Click" Height="64"/>
+
+        <TextBlock x:Name="plotFileName" HorizontalAlignment="Left" Margin="68,394,0,0" TextWrapping="Wrap" Text="Filename" VerticalAlignment="Top" Width="459" Height="46" Background="DarkGray"/>
 
     </Grid>
 </Window>
